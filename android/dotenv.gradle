@@ -1,0 +1,31 @@
+def getEnvFile(String flavor) {
+    def envFile = file(".env." + flavor)
+    if (!envFile.exists()) {
+        envFile = file(".env")
+    }
+    return envFile
+}
+
+def loadEnvProperties(String flavor) {
+    def properties = new Properties()
+    def envFile = getEnvFile(flavor)
+
+    if (envFile.exists()) {
+        envFile.withReader { reader ->
+            properties.load(reader)
+        }
+    }
+    return properties
+}
+
+def flavor = project.hasProperty("flavor") ? project.property("flavor") : ""
+def envProperties = loadEnvProperties(flavor)
+
+android {
+    defaultConfig {
+        buildConfigField 'String', 'BASE_URL', "\"${envProperties['BASE_URL']}\""
+        buildConfigField 'String', 'APP_NAME', "\"${envProperties['APP_NAME']}\""
+        buildConfigField 'String', 'LOGO', "\"${envProperties['LOGO']}\""
+        buildConfigField 'String', 'THEME', "\"${envProperties['THEME']}\""
+    }
+}

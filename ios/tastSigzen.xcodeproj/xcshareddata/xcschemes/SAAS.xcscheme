@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme xmlns="http://schemas.apple.com/xcode">
+    <BuildAction>
+        <BuildActionEntries>
+            <BuildActionEntry>
+                <BuildableReference>
+                    <BlueprintIdentifier>YOUR_APP_BLUEPRINT_ID</BlueprintIdentifier>
+                    <BuildableName>YourAppName.app</BuildableName>
+                    <BlueprintName>YourAppName</BlueprintName>
+                    <ReferencedContainer>container:YourAppName.xcodeproj</ReferencedContainer>
+                </BuildableReference>
+            </BuildActionEntry>
+        </BuildActionEntries>
+    </BuildAction>
+    <LaunchAction>
+        <BuildableProductRunnable>
+            <BuildableReference>
+                <BlueprintIdentifier>YOUR_APP_BLUEPRINT_ID</BlueprintIdentifier>
+                <BuildableName>YourAppName.app</BuildableName>
+                <BlueprintName>YourAppName</BlueprintName>
+                <ReferencedContainer>container:YourAppName.xcodeproj</ReferencedContainer>
+            </BuildableReference>
+        </BuildableProductRunnable>
+        <ConfigurationName>Debug</ConfigurationName>
+    </LaunchAction>
+</Scheme>

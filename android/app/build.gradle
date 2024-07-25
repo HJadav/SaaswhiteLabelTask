@@ -92,20 +92,37 @@ android {
     }
     buildTypes {
         debug {
+            buildConfigField "String", "ENV_FILE", '"env"'
+
             signingConfig signingConfigs.debug
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
+                        buildConfigField "String", "ENV_FILE", '"env"'
+
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+    flavorDimensions "default"
+    productFlavors {
+        saas {
+            dimension "default"
+            applicationIdSuffix ".saas"
+            resValue "string", "app_name", "SAASApp"
+        }
+        whiteLabel {
+            dimension "default"
+            applicationIdSuffix ".whitelabel"
+            resValue "string", "app_name", "WhiteLabelApp"
+        }
+    }
+
 }
 
 dependencies {
-    // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
 
     if (hermesEnabled.toBoolean()) {
@@ -115,4 +132,9 @@ dependencies {
     }
 }
 
-apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+// Apply the dotenv.gradle script to load environment variables
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+
+// Apply the native modules
+apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); 
+applyNativeModulesAppBuildGradle(project)

@@ -45,7 +45,7 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-tastSigzen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tastSigzen.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = tastSigzen/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-tastSigzen-tastSigzenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tastSigzen-tastSigzenTests.release.xcconfig"; path = "Target Support Files/Pods-tastSigzen-tastSigzenTests/Pods-tastSigzen-tastSigzenTests.release.xcconfig"; sourceTree = "<group>"; };
-		9F9DFBBCD6F0FB1C7E95DFF2 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = tastSigzen/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		9F9DFBBCD6F0FB1C7E95DFF2 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = tastSigzen/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -188,6 +188,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				095A84B12C523479000D3582 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -287,6 +288,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tastSigzen/Pods-tastSigzen-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		095A84B12C523479000D3582 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/newInputFile",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -552,6 +571,7 @@
 				CXX = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENVFILE = "ENVFILE=$(SRCROOT)/../.env\nENVFILE=$(SRCROOT)/../.env.whiteLabel\n";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -635,9 +655,11 @@
 				CXX = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENVFILE = "ENVFILE=$(SRCROOT)/../.env\nENVFILE=$(SRCROOT)/../.env.whiteLabel\n";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE_ENVIRONMENT=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -676,6 +698,24 @@
 			};
 			name = Release;
 		};
+		 83CBBA221A601CBA00E9B192 /* SAAS */ = {
+        isa = XCBuildConfiguration;
+        baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Configs/SAAS.xcconfig */;
+        buildSettings = {
+            /* Add custom settings for SAAS configuration */
+            ENVFILE = "$(SRCROOT)/../.env";
+        };
+        name = SAAS;
+    };
+    83CBBA231A601CBA00E9B192 /* WhiteLabel */ = {
+        isa = XCBuildConfiguration;
+        baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Configs/WhiteLabel.xcconfig */;
+        buildSettings = {
+            /* Add custom settings for WhiteLabel configuration */
+            ENVFILE = "$(SRCROOT)/../.env.whiteLabel";
+        };
+        name = WhiteLabel;
+    };
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -684,6 +724,8 @@
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
 				00E356F71AD99517003FC87E /* Release */,
+				  00E357031AD99517003FC87E /* SAAS */,
+            00E357041AD99517003FC87E /* WhiteLabel */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -693,6 +735,8 @@
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
 				13B07F951A680F5B00A75B9A /* Release */,
+				 13B07F961A680F5B00A75B9A /* SAAS */,
+            13B07F971A680F5B00A75B9A /* WhiteLabel */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -702,6 +746,8 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+				 83CBBA221A601CBA00E9B192 /* SAAS */,
+            83CBBA231A601CBA00E9B192 /* WhiteLabel */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
